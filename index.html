@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wedding Guest Check</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      background: #fefefe;
+    }
+    input, button {
+      padding: 10px;
+      margin-top: 1rem;
+      width: 100%;
+    }
+    .result {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Welcome to the Wedding of [Bride] & [Groom]</h2>
+  <p>Please enter your full name to check your invitation status:</p>
+
+  <input type="text" id="guestName" placeholder="Enter your full name">
+  <button onclick="checkGuest()">Check Invitation</button>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    const guestList = {
+      "Ana Santos": { table: 1, chair: 3 },
+      "Mark Reyes": { table: 2, chair: 5 },
+      "Liza Dela Cruz": { table: 3, chair: 1 },
+      // Add more guests here
+    };
+
+    function checkGuest() {
+      const nameInput = document.getElementById("guestName").value.trim();
+      const result = document.getElementById("result");
+
+      if (guestList[nameInput]) {
+        const { table, chair } = guestList[nameInput];
+        result.innerHTML = Welcome, <strong>${nameInput}</strong>!<br>
+                            Your seat is at <strong>Table ${table}</strong>, Chair <strong>${chair}</strong>.;
+        result.style.color = "green";
+      } else {
+        result.innerHTML = You're not on the guest list.<br>
+                            Please ask one of the bride's sisters for assistance.;
+        result.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>            
